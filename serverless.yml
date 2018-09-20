@@ -1,0 +1,29 @@
+service: user-service
+
+provider:
+  name: aws
+  runtime: nodejs8.10
+  logRetentionInDays: 14
+  iamRoleStatements:
+    - Effect: 'Allow'
+      Action:
+        - 'lambda:InvokeFunction'
+      Resource: "*"
+  environment: ${file(env.yml):${opt:stage}}
+  region: ap-southeast-1
+
+package:
+ exclude:
+  - src/**
+  - dist/**/sampleInputs/**
+
+functions:
+  authenticate:
+    handler: dist/authenticate/index.authenticate
+    timeout: 10
+  authorizer:
+    handler: dist/authorizer/index.authorizer
+    timeout: 30
+  createUser:
+    handler: dist/createUser/index.createUser
+    timeout: 10

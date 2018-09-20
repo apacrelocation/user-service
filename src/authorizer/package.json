@@ -1,0 +1,17 @@
+{
+  "name": "create-user",
+  "version": "1.0.0",
+  "description": "creates user object in the database",
+  "main": "index.js",
+  "scripts": {
+    "build": "npm run clean && babel src/ -d dist/ --copy-files",
+    "clean": "rimraf dist/*",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@babel/runtime": "^7.0.0",
+    "jsonwebtoken": "^8.3.0"
+  }
+}
